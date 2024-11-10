@@ -1,4 +1,4 @@
-import ILoginRequest from "../../apps/auth/models/ILoginRequest";
+import ILoginRequest from '../../apps/auth/models/ILoginRequest';
 
 interface IUserManager {
     loadUser(userId: string): ILoginRequest;

@@ -1,15 +1,9 @@
-import { JsonUserManager } from '../utils/users';
-import BookingConnector from '../apps/bookings/connectors/BookingConnector';
-import WebSocketClient from "../apps/websocket/WebSocketClient";
+import WebSocketClient from '../../apps/websocket/WebSocketClient';
 
-describe('Authorization Functionalities', () => {
-    let userManager: JsonUserManager;
-    let usersConnector: BookingConnector;
+describe('WebSocket Client Tests', () => {
     let wsClient: WebSocketClient;
 
     beforeEach(() => {
-        userManager = new JsonUserManager();
-        usersConnector = new BookingConnector();
         wsClient = new WebSocketClient('', 100);
     });
 
@@ -17,7 +11,7 @@ describe('Authorization Functionalities', () => {
         if (!wsClient.socket.connected) {
             wsClient.socket.connect();
         }
-    })
+    });
 
     afterEach(() => {
         if (wsClient.socket.connected) {
@@ -29,17 +23,17 @@ describe('Authorization Functionalities', () => {
     it('should connect to ws server', async () => {
         await new Promise<void>((resolve, reject) => {
             wsClient.socket.on('connect', () => {
-                resolve()
-            })
+                resolve();
+            });
 
             wsClient.socket.on('connect_error', (err) => {
                 console.error('Connection error:', err);
                 reject(err);
             });
-            wsClient.socket.connect()
-        })
+            wsClient.socket.connect();
+        });
         expect(wsClient.socket.connected).toBe(true);
-    })
+    });
 
     it('should send and receive a message from ws server', async () => {
         await new Promise<void>((resolve, reject) => {
@@ -59,7 +53,7 @@ describe('Authorization Functionalities', () => {
             });
 
             wsClient.socket.on('connect', () => {
-                wsClient.socket.emit('message', 'Test message');
+                wsClient.socket.emit('message', 'Test message' as any);
             });
         });
     });

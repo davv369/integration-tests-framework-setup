@@ -18,7 +18,7 @@ class WebSocketClient {
 
     async connect() {
         this.socket.connect();
-        console.log('Socket Connected')
+        console.log('Socket Connected');
         return this.socket.connected;
     }
 

@@ -1,8 +1,8 @@
-import {JsonUserManager} from "../utils/users";
-import AuthConnector from "../apps/auth/connectors/AuthConnector";
-import ILoginRequest from "../apps/auth/models/ILoginRequest";
-import ILoginResponse from "../apps/auth/models/ILoginResponse";
-import translations from "../utils/translations.json"
+import {JsonUserManager} from '../utils/users';
+import AuthConnector from '../apps/auth/connectors/AuthConnector';
+import ILoginRequest from '../apps/auth/models/ILoginRequest';
+import ILoginResponse from '../apps/auth/models/ILoginResponse';
+import translations from '../utils/translations.json';
 
 describe('Authorization Functionalities', () => {
     let userManager: JsonUserManager;
@@ -22,7 +22,6 @@ describe('Authorization Functionalities', () => {
         loginResults = await loginConnector.login(loginRequest);
         expect(typeof loginResults.token).toBe('string');
     });
-
 
     it('should return an error message when logging in with invalid credentials', async () => {
         const { username, password } = userManager.loadUser(
