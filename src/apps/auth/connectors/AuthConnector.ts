@@ -8,7 +8,7 @@ import ILoginResponse, { loginResponseVerifier } from '../models/ILoginResponse'
 import IUnauthorizedLoginResponse, {
     unauthorizedResponseVerifier,
 } from '../models/IUnauthorizedLoginResponse';
-import ILoginRequest from "../models/ILoginRequest";
+import ILoginRequest from '../models/ILoginRequest';
 
 class AuthConnector {
     private _loginConnector: IConnector<ILoginRequest, ILoginResponse>;

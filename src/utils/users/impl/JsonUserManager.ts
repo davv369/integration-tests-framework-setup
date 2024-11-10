@@ -1,6 +1,6 @@
 import IUserManager from '../IUserManager';
 import USERS from '../../../fixtures/users.json';
-import ILoginRequest from "../../../apps/auth/models/ILoginRequest";
+import ILoginRequest from '../../../apps/auth/models/ILoginRequest';
 
 class JsonUserManager implements IUserManager {
     loadUser(userId: string): ILoginRequest {

@@ -1,4 +1,4 @@
-import {createAssertEquals} from "typia";
+import {createAssertEquals} from 'typia';
 
 export interface IBookingIdsList {
     bookingid: number;

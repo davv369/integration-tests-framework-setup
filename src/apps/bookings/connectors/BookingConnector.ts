@@ -7,17 +7,17 @@ import { Path } from '../../../utils/urls/models';
 import {
     bookingDetailsResponseVerifier,
     IBookingDetailsResponse
-} from "../models/response/IBookingDetailsResponse";
-import {IBookingDetailsRequest} from "../models/request/IBookingDetailsRequest";
-import {bookingIdsListResponseVerifier, IBookingIdListResponse} from "../models/response/IBookingIdsListResponse";
+} from '../models/response/IBookingDetailsResponse';
+import {IBookingDetailsRequest} from '../models/request/IBookingDetailsRequest';
+import {bookingIdsListResponseVerifier, IBookingIdListResponse} from '../models/response/IBookingIdsListResponse';
 
 class BookingConnector {
     private _bookingIds: IConnector<void, IBookingIdListResponse>;
-    private _bookingDetails: IConnector<IBookingDetailsRequest, IBookingDetailsResponse>
+    private _bookingDetails: IConnector<IBookingDetailsRequest, IBookingDetailsResponse>;
     constructor(private _urlManager: IUrlManager = new JsonUrlManager()) {
         this._bookingIds = ConnectorFactory.createConnector<
         void,
-            IBookingIdListResponse
+        IBookingIdListResponse
         >(
             HttpMethods.GET,
             {
@@ -33,8 +33,8 @@ class BookingConnector {
         );
 
         this._bookingDetails = ConnectorFactory.createConnector<
-            IBookingDetailsRequest,
-            IBookingDetailsResponse
+        IBookingDetailsRequest,
+        IBookingDetailsResponse
         >(
             HttpMethods.GET,
             {
@@ -50,12 +50,12 @@ class BookingConnector {
         );
     }
 
-    async getBookingIds(token: string){
-        return this._bookingIds.send({})
+    async getBookingIds(){
+        return this._bookingIds.send({});
     }
 
     async getBooking(id: string){
-        return this._bookingDetails.send({pathArguments: {id}})
+        return this._bookingDetails.send({pathArguments: {id}});
     }
 
     // Fetch user profile by ID

@@ -1,9 +1,8 @@
 import { createAssertEquals } from 'typia';
 
 interface IUnauthorizedLoginResponse {
-    reason: string
+    reason: string;
 }
-
 export const unauthorizedResponseVerifier =
   createAssertEquals<IUnauthorizedLoginResponse>();
 

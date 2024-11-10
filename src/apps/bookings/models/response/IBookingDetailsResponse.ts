@@ -1,4 +1,4 @@
-import {createAssertEquals} from "typia";
+import {createAssertEquals} from 'typia';
 
 interface IBookingDates {
     checkin: string;
