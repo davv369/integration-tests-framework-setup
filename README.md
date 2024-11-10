@@ -1,3 +1,7 @@
+# Integration Tests Framework Setup
+
+![CI Workflow Status](https://github.com/davv369/integration-tests-framework-setup/actions/workflows/ci.yml/badge.svg)
+
 # Restful Booker - test examples
 
 ## Description
