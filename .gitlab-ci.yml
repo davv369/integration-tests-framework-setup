@@ -1,0 +1,49 @@
+default:
+  image: node:18-alpine
+  tags:
+    ## here insert tag from the available repo runner
+    - exampleTag
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+
+build:
+  stage: build
+  script:
+    - npm ci
+
+lint:
+  stage: test
+  script:
+    - npm install eslint --save-dev
+    - npm run lint
+
+run-tests:
+  stage: test
+  script:
+    - npm ci
+    - npm run test
+
+  artifacts:
+    expire_in: 1 week  #modify report lifetime
+    when: always
+    paths:
+      ## modify report path
+      - reports/test-report.html
+      ## modify runner timeout
+
+  timeout: 30min
+
+  rules:
+    - if: $SKIP_CI == "True"
+      when: never
+    - if: $CI_COMMIT_MESSAGE =~ /\[SKIP_CI\]/
+      when: never
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_MESSAGE =~ /\[RUN_TESTS\]/  #add [RUN_TESTS] to commit message to run tests
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
